@@ -1,0 +1,101 @@
+CREATE TABLE [dbo].[Article] (
+    [ArticleId] INT             IDENTITY (1, 1) NOT NULL,
+    [Title]     NVARCHAR (200)  NOT NULL,
+    [UserId]    INT             NOT NULL,
+    [Article]   NVARCHAR (3000) NOT NULL,
+    [Decklist]  NVARCHAR (500)  NULL,
+    PRIMARY KEY CLUSTERED ([ArticleId] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[Cards] (
+    [CardId]       INT           IDENTITY (1, 1) NOT NULL,
+    [CardName]     NVARCHAR (70) NOT NULL,
+    [CardTypeId]   INT           NOT NULL,
+    [Race]         INT           NOT NULL,
+    [Limit]        INT           NOT NULL,
+    [AttackPoint]  INT           NULL,
+    [DefensePoint] INT           NULL,
+    [Level]        INT           NULL,
+    [Attribute]    INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([CardId] ASC)
+);
+
+
+CREATE TABLE [dbo].[CardType] (
+    [CardTypeId]   INT           IDENTITY (1, 1) NOT NULL,
+    [CardTypeName] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([CardTypeId] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[Elements] (
+    [ElementId]   INT           IDENTITY (1, 1) NOT NULL,
+    [ElementName] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ElementId] ASC)
+);
+
+
+CREATE TABLE [dbo].[Leaflet] (
+    [LeafletId]   INT            IDENTITY (1, 1) NOT NULL,
+    [CardId]      INT            NOT NULL,
+    [UserId]      INT            NOT NULL,
+    [UnitPrice]   INT            NOT NULL,
+    [UnitInStock] INT            NOT NULL,
+    [Region]      NVARCHAR (100) NOT NULL,
+    PRIMARY KEY CLUSTERED ([LeafletId] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[OperationClaims] (
+    [Id]   INT            IDENTITY (1, 1) NOT NULL,
+    [Name] NVARCHAR (250) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[Orders] (
+    [OrderId]   INT           IDENTITY (1, 1) NOT NULL,
+    [UserId]    INT           NOT NULL,
+    [LeafletId] INT           NOT NULL,
+    [Active]    BIT           NOT NULL,
+    [Price]     INT           NOT NULL,
+    [Number]    INT           NOT NULL,
+    [CardName]  NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([OrderId] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[Races] (
+    [RaceId]   INT           IDENTITY (1, 1) NOT NULL,
+    [RaceName] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([RaceId] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[UserOperationClaims] (
+    [Id]               INT IDENTITY (1, 1) NOT NULL,
+    [UserId]           INT NOT NULL,
+    [OperationClaimId] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+CREATE TABLE [dbo].[Users] (
+    [Id]           INT             IDENTITY (1, 1) NOT NULL,
+    [FirstName]    VARCHAR (50)    NOT NULL,
+    [LastName]     VARCHAR (50)    NOT NULL,
+    [Email]        VARCHAR (50)    NOT NULL,
+    [PasswordHash] VARBINARY (500) NOT NULL,
+    [PasswordSalt] VARBINARY (500) NOT NULL,
+    [Status]       BIT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
