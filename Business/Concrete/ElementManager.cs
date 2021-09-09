@@ -15,7 +15,7 @@ namespace Business.Concrete
         {
             _elementDal = elementDal;
         }
-        [CacheAspect]
+        
         public IDataResult<List<Element>> GetAll()
         {
             return new SuccessDataResult<List<Element>>(_elementDal.GetAll());
