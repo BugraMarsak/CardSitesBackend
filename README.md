@@ -1,0 +1,1 @@
+# Sql tablo kodları sqltableda
