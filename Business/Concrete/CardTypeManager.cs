@@ -15,7 +15,7 @@ namespace Business.Concrete
         {
             _cardTypeDal = cardTypeDal;
         }
-        [CacheAspect]
+
         public IDataResult<List<CardType>> GetAll()
         {
             return new SuccessDataResult<List<CardType>>(_cardTypeDal.GetAll());
