@@ -5,11 +5,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -21,7 +17,7 @@ namespace Business.Concrete
         {
             _leafletDal = leafletDal;
         }
-        
+
         public IResult Add(Leaflet leaflet)
         {
             _leafletDal.Add(leaflet);
@@ -34,12 +30,10 @@ namespace Business.Concrete
             _leafletDal.Delete(leaflet);
             return new SuccessResult(Messages.deleted);
         }
-
         public IDataResult<List<LeafletDetailDto>> GetAllByLeafletId(int id)
         {
             return new SuccessDataResult<List<LeafletDetailDto>>(_leafletDal.GetByLeafletId(id));
         }
-        //[CacheAspect]
         public IDataResult<List<LeafletDetailDto>> GetLeafletDetails()
         {
             return new SuccessDataResult<List<LeafletDetailDto>>(_leafletDal.GetLeafletDetails());

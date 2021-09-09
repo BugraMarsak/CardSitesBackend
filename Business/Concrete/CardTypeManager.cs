@@ -1,12 +1,9 @@
 ﻿using Business.Abstract;
+using Core.Aspect.Autofac.Caching;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -18,7 +15,7 @@ namespace Business.Concrete
         {
             _cardTypeDal = cardTypeDal;
         }
-
+        [CacheAspect]
         public IDataResult<List<CardType>> GetAll()
         {
             return new SuccessDataResult<List<CardType>>(_cardTypeDal.GetAll());

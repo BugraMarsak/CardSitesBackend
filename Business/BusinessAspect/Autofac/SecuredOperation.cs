@@ -1,23 +1,18 @@
 ﻿using Castle.DynamicProxy;
+using Core.Constants;
+using Core.Extensions;
 using Core.Utilities.Interceptors;
 using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using Core.Extensions;
-using Core.Constants;
+using System;
 
 namespace Business.BusinessAspects.Autofac
 {
-    //jwt için
     public class SecuredOperation : MethodInterception
     {
         private string[] _roles;
-        private IHttpContextAccessor _httpContextAccessor;//her istek için bir tane oluşur
+        private IHttpContextAccessor _httpContextAccessor;
 
         public SecuredOperation(string roles)
         {

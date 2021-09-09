@@ -1,10 +1,5 @@
 ﻿using Entities.Concrete;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
@@ -12,9 +7,9 @@ namespace Business.ValidationRules.FluentValidation
     {
         public OrderValidator()
         {
-            RuleFor(p=>p.Number).NotEmpty();
+            RuleFor(p => p.Number).NotEmpty();
             RuleFor(p => p.Number).GreaterThan(-1);
         }
-        
+
     }
 }
