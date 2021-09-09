@@ -23,7 +23,6 @@ namespace Business.Concrete
             _articleDal.Add(article);
             return new SuccessResult(Messages.ArticleAdded);
         }
-        [CacheAspect]
         public IDataResult<List<Article>> GetAll()
         {
             return new SuccessDataResult<List<Article>>(_articleDal.GetAll(), Messages.ProductsListed);
@@ -33,7 +32,6 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Article>(_articleDal.Get(p => p.ArticleId == articleId));
         }
-        [CacheRemoveAspect("IArticleService.GetAll")]
         public IResult Update(Article article)
         {
             throw new NotImplementedException();
