@@ -38,7 +38,6 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<LeafletDetailDto>>(_leafletDal.GetLeafletDetails());
         }
-        //[CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Leaflet leaflet)
         {
             _leafletDal.Update(leaflet);
