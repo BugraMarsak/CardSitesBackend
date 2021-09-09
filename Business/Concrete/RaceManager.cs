@@ -15,7 +15,6 @@ namespace Business.Concrete
         {
             _raceDal = raceDal;
         }
-        [CacheAspect]
         public IDataResult<List<Race>> GetAll()
         {
             return new SuccessDataResult<List<Race>>(_raceDal.GetAll());
